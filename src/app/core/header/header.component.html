@@ -8,6 +8,9 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>Angular Base</span>
+  <a mat-flat-button color="primary" routerLink="/" routerLinkActive="active">Home</a>
+  <span class="example-spacer"></span>
+  <a mat-flat-button color="primary" (click)="logout()">Logout</a>
 </mat-toolbar>
 <!-- <div fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="header">
   <button mat-icon-button (click)="sidenav.toggle()">

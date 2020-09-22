@@ -1,12 +1,18 @@
-<app-header [sidenav]="leftSidenav"></app-header>
+<app-header [sidenav]="leftSidenav" *ngIf="currentUser"></app-header>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #leftSidenav mode="side" opened>
+  <mat-sidenav
+    #leftSidenav
+    mode="side"
+    [opened]="currentUser"
+    [ngStyle]="{ visibility: currentUser ? 'visible' : 'hidden' }"
+  >
     <app-sidenav></app-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open' : 'close'">
-    <div class="main_content">
-      <div style="padding: 20px">Your content</div>
+  <mat-sidenav-content [@onMainContentChange]="!currentUser ? 'hidden' : onSideNavChange ? 'open' : 'close'">
+    <div class="main-content" [ngStyle]="{ height: currentUser ? 'calc(100vh - 100px)' : 'calc(100vh - 40px)' }">
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <app-footer></app-footer>
+<ngx-spinner></ngx-spinner>

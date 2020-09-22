@@ -1,0 +1,80 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field class="example-full-width form-input-column">
+          <input matInput placeholder="Username" formControlName="username" />
+          <!-- <mat-error *ngIf="f.username.invalid && f.username.errors.required">Username is required</mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width form-input-column">
+          <input
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <!-- <mat-error *ngIf="f.password.invalid && f.password.errors.required">Password is required</mat-error> -->
+        </mat-form-field>
+      </mat-card-content>
+      <button type="submit" mat-stroked-button color="accent" class="btn-block" [disabled]="loginForm.invalid">
+        Log in
+      </button>
+    </form>
+  </mat-card>
+</div>
+
+<!-- <div class="col-md-6 offset-md-3 mt-5">
+  <div class="alert alert-info">
+    Username: test<br />
+    Password: test
+  </div>
+  <div class="card">
+    <h4 class="card-header">Angular 10 JWT Login Example</h4>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+          />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+      </form>
+    </div>
+  </div>
+</div> -->

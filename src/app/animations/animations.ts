@@ -19,6 +19,12 @@ export const onSideNavChange = trigger('onSideNavChange', [
 
 export const onMainContentChange = trigger('onMainContentChange', [
   state(
+    'hidden',
+    style({
+      'margin-left': '0px'
+    })
+  ),
+  state(
     'close',
     style({
       'margin-left': '62px',
@@ -32,6 +38,8 @@ export const onMainContentChange = trigger('onMainContentChange', [
   ),
   transition('close => open', animate('250ms ease-in')),
   transition('open => close', animate('250ms ease-in')),
+  transition('close => hidden', animate('250ms ease-in')),
+  transition('open => hidden', animate('250ms ease-in')),
 ]);
 
 export const animateText = trigger('animateText', [
